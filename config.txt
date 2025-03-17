@@ -1,0 +1,3 @@
+arm_64bit=0
+uart_2ndstage=0
+dtoverlay=miniuart-bt
