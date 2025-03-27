@@ -8,9 +8,8 @@ To maximize performance and eliminate unnecessary overhead, I will develop my ow
 
 ## Game Development
 Rather than relying on emulation (e.g., SNES, N64, PS1), I will develop a collection of original games inspired by classics like Super Mario World, Crash Bandicoot, and Super Mario 64. These games will be optimized for my hardware, ensuring smooth performance.
-I am still deciding on the best programming language for game development. These are the ones that stand out:
- - C/C++ (efficient and integrates well with the OS)
- - Rust (safer but more complex to integrate)
+
+All games will be made in C++
 
 ## Hardware Components
  - Raspberry Pi Zero 2 W (RP3A0)
