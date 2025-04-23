@@ -1,0 +1,98 @@
+
+armstub7-rpi4.elf:     file format elf32-littlearm
+
+
+Disassembly of section .init:
+
+00008000 <_start>:
+    8000:	ee106fb0 	mrc	15, 0, r6, cr0, cr0, {5}
+    8004:	fa000005 	blx	8020 <_main>
+
+00008008 <_secure_monitor>:
+    8008:	ee011f30 	mcr	15, 0, r1, cr1, cr0, {1}
+    800c:	e300c131 	movw	ip, #305	@ 0x131
+    8010:	ee01cf11 	mcr	15, 0, ip, cr1, cr1, {0}
+    8014:	e300c1fa 	movw	ip, #506	@ 0x1fa
+    8018:	e16ff00c 	msr	SPSR_fsxc, ip
+    801c:	e1b0f00e 	movs	pc, lr
+
+00008020 <_main>:
+    8020:	2000      	movs	r0, #0
+    8022:	07b6      	lsls	r6, r6, #30
+    8024:	4f25      	ldr	r7, [pc, #148]	@ (80bc <_main+0x9c>)
+    8026:	ec52 1f1f 	mrrc	15, 1, r1, r2, cr15
+    802a:	f041 0140 	orr.w	r1, r1, #64	@ 0x40
+    802e:	f022 0203 	bic.w	r2, r2, #3
+    8032:	ec42 1f1f 	mcrr	15, 1, r1, r2, cr15
+    8036:	ee11 1f10 	mrc	15, 0, r1, cr1, cr0, {0}
+    803a:	f441 5180 	orr.w	r1, r1, #4096	@ 0x1000
+    803e:	ee01 1f10 	mcr	15, 0, r1, cr1, cr0, {0}
+    8042:	f507 2582 	add.w	r5, r7, #266240	@ 0x41000
+    8046:	b90e      	cbnz	r6, 804c <_main+0x2c>
+    8048:	2103      	movs	r1, #3
+    804a:	6029      	str	r1, [r5, #0]
+    804c:	f04f 31ff 	mov.w	r1, #4294967295	@ 0xffffffff
+    8050:	2208      	movs	r2, #8
+    8052:	f105 0580 	add.w	r5, r5, #128	@ 0x80
+    8056:	f845 1b04 	str.w	r1, [r5], #4
+    805a:	3a01      	subs	r2, #1
+    805c:	d1fb      	bne.n	8056 <_main+0x36>
+    805e:	f507 2584 	add.w	r5, r7, #270336	@ 0x42000
+    8062:	f240 11e7 	movw	r1, #487	@ 0x1e7
+    8066:	6029      	str	r1, [r5, #0]
+    8068:	21ff      	movs	r1, #255	@ 0xff
+    806a:	6069      	str	r1, [r5, #4]
+    806c:	f44f 6140 	mov.w	r1, #3072	@ 0xc00
+    8070:	ee01 1f51 	mcr	15, 0, r1, cr1, cr1, {2}
+    8074:	4912      	ldr	r1, [pc, #72]	@ (80c0 <_main+0xa0>)
+    8076:	ee0e 1f10 	mcr	15, 0, r1, cr14, cr0, {0}
+    807a:	f04f 4100 	mov.w	r1, #2147483648	@ 0x80000000
+    807e:	60b9      	str	r1, [r7, #8]
+    8080:	2101      	movs	r1, #1
+    8082:	ee0e 1f33 	mcr	15, 0, r1, cr14, cr3, {1}
+    8086:	ee0c 0f30 	mcr	15, 0, r0, cr12, cr0, {1}
+    808a:	f3bf 8f6f 	isb	sy
+    808e:	2173      	movs	r1, #115	@ 0x73
+    8090:	f7f0 8000 	smc	#0
+    8094:	ee0c 0f10 	mcr	15, 0, r0, cr12, cr0, {0}
+    8098:	ec40 0f4e 	mcrr	15, 4, r0, r0, cr14
+    809c:	2122      	movs	r1, #34	@ 0x22
+    809e:	ee29 1f50 	mcr	15, 1, r1, cr9, cr0, {2}
+    80a2:	f640 4142 	movw	r1, #3138	@ 0xc42
+    80a6:	e9df 2314 	ldrd	r2, r3, [pc, #80]	@ 80f8 <atags>	@ 0x50
+    80aa:	b136      	cbz	r6, 80ba <_main+0x9a>
+    80ac:	0eb6      	lsrs	r6, r6, #26
+    80ae:	36cc      	adds	r6, #204	@ 0xcc
+    80b0:	bf20      	wfe
+    80b2:	59bb      	ldr	r3, [r7, r6]
+    80b4:	2b00      	cmp	r3, #0
+    80b6:	d0fb      	beq.n	80b0 <_main+0x90>
+    80b8:	51bb      	str	r3, [r7, r6]
+    80ba:	4718      	bx	r3
+    80bc:	ff800000 			@ <UNDEFINED> instruction: 0xff800000
+    80c0:	0337f980 	teqeq	r7, #128, 18	@ 0x200000	@ <UNPREDICTABLE>
+	...
+    80d4:	53514946 	cmppl	r1, #1146880	@ 0x118000
+	...
+    80f0:	5afe570b 	bpl	fff9dd24 <_stack+0xfff1dd24>
+    80f4:	00000000 	andeq	r0, r0, r0
+
+000080f8 <atags>:
+    80f8:	00000000 	andeq	r0, r0, r0
+
+000080fc <kernel>:
+    80fc:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002041 	andeq	r2, r0, r1, asr #32
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000016 	andeq	r0, r0, r6, lsl r0
+  10:	412d3705 			@ <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	44022c02 	strmi	r2, [r2], #-3074	@ 0xfffff3fe
+  20:	Address 0x20 is out of bounds.
+
