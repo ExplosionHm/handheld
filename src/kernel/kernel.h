@@ -1,39 +1,20 @@
-//
-// kernel.h
-//
-// Circle - A C++ bare metal environment for Raspberry Pi
-// Copyright (C) 2014-2024  R. Stange <rsta2@o2online.de>
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
 #ifndef _kernel_h
 #define _kernel_h
 
 #include <circle/actled.h>
 #include <circle/koptions.h>
 #include <circle/2dgraphics.h>
-#include <circle/devicenameservice.h>
+#include <circle/serial.h>
 #include <circle/types.h>
-#include <SDCard/emmc.h>
 
-#ifdef SPI_DISPLAY
-#include <circle/spimaster.h>
-#include <display/sampleconfig.h>
-#elif defined(I2C_DISPLAY)
-#include <circle/i2cmaster.h>
-#include <display/sampleconfig.h>
-#endif
+#include <circle/devicenameservice.h>
+#include <circle/fs/fat/fatfs.h>
+#include <circle/fs/fat/fat.h>
+#include <circle/fs/fat/fatinfo.h>
+#include <circle/fs/fat/fatcache.h>
+#include <circle/interrupt.h>
+#include <circle/timer.h>
+#include <SDCard/emmc.h>
 
 enum TShutdownMode
 {
@@ -53,10 +34,19 @@ public:
 	TShutdownMode Run(void);
 
 private:
-	CDeviceNameService m_DeviceNameService;
-	CActLED m_ActLED;
-	CKernelOptions m_Options;
-	C2DGraphics m_2DGraphics;
-};
+	CFATCache m_fatcache;
+	CFATInfo m_fatinfo;
+	CFAT m_fat;
+	CFATFileSystem m_fatfs;
 
+	CKernelOptions m_options;
+	CEMMCDevice m_emmc;
+
+	CInterruptSystem m_interupt;
+	CTimer m_timer;
+	CActLED m_ActLED;
+	C2DGraphics m_2DGraphics;
+
+	CDeviceNameService m_DeviceNameService;
+};
 #endif

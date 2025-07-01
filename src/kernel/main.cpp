@@ -16,12 +16,12 @@ int main(void)
 	switch (ShutdownMode)
 	{
 	case ShutdownReboot:
-		reboot ();
+		reboot();
 		return EXIT_REBOOT;
 
 	case ShutdownHalt:
 	default:
-		halt ();
+		halt();
 		return EXIT_HALT;
 	}
 }

@@ -14,5 +14,19 @@ main.o main.d: main.cpp kernel.h ../..//include/circle/actled.h \
  ../..//include/circle/machineinfo.h \
  ../..//include/circle/devicetreeblob.h \
  ../..//include/circle/chargenerator.h ../..//include/circle/font.h \
- ../..//include/circle/devicenameservice.h ../..//include/circle/device.h \
- ../..//include/circle/ptrlist.h ../..//include/circle/startup.h
+ ../..//include/circle/serial.h ../..//include/circle/device.h \
+ ../..//include/circle/ptrlist.h \
+ ../..//include/circle/devicenameservice.h \
+ ../..//include/circle/fs/fat/fatfs.h ../..//include/circle/fs/fsdef.h \
+ ../..//include/circle/fs/fat/fatfsdef.h \
+ ../..//include/circle/fs/fat/fatcache.h \
+ ../..//include/circle/genericlock.h \
+ ../..//include/circle/fs/fat/fatinfo.h \
+ ../..//include/circle/fs/fat/fat.h ../..//include/circle/fs/fat/fatdir.h \
+ ../..//include/circle/timer.h ../..//include/circle/string.h \
+ ../..//include/circle/stdarg.h ../..//include/SDCard/emmc.h \
+ ../..//include/circle/fs/partitionmanager.h \
+ ../..//include/circle/fs/partition.h ../..//include/circle/logger.h \
+ ../..//include/circle/time.h ../..//include/SDCard/sdhost.h \
+ ../..//include/SDCard/mmchost.h ../..//include/SDCard/mmc.h \
+ ../..//include/circle/memio.h ../..//include/circle/startup.h
