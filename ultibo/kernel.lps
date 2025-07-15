@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="kernel.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="120"/>
+        <CursorPos X="81" Y="130"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../ultibo/core/fpc/source/rtl/ultibo/core/platform.pas"/>
+        <UnitName Value="Platform"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13022"/>
+        <CursorPos X="5" Y="13050"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="21">
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="19" Column="8"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="13" Column="25"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="61" Column="69" TopLine="51"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="89" Column="90" TopLine="80"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="34" Column="35" TopLine="21"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="36" Column="3" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="35" Column="5" TopLine="21"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="15" Column="38"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Column="6"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="80" Column="37" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="70" Column="64" TopLine="63"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="56" Column="97" TopLine="51"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="9" Column="31"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="12" Column="54"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="10" Column="27"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="8" Column="48"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="5" Column="73"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="32" Column="36" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="42" Column="46" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="430" Column="47" TopLine="419"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="105" Column="73" TopLine="81"/>
+      </Position>
+      <Position>
+        <Filename Value="kernel.lpr"/>
+        <Caret Line="92" Column="61" TopLine="81"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

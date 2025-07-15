@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/home/ehm/ultibo/core/fpc/bin/fpc" Date="1752125526"/>
+  <Params Value="-Tultibo -Parm -CpARMV7A -WpRPI3B @/home/ehm/ultibo/core/fpc/bin/RPI3.CFG -MObjFPC -Scghi -CX -O2 -XX -l -vewnhibq -Fi/home/ehm/Documents/Projects/handheld/ultibo/lib/arm-ultibo -Fu/home/ehm/Documents/Projects/handheld/ultibo/ -FU/home/ehm/Documents/Projects/handheld/ultibo/lib/arm-ultibo/ -FE/home/ehm/Documents/Projects/handheld/ultibo/ -o/home/ehm/Documents/Projects/handheld/ultibo/kernel kernel.lpr"/>
+</CONFIG>
