@@ -1,128 +1,93 @@
 package lexer
 
-import (
-	"encoding/json"
-	"os"
-	"regexp"
-)
-
 type TokenType string
 
 const (
-	ILLEGAL TokenType = "ILLEGAL"
-	EOF     TokenType = "EOF"
-	IDENT   TokenType = "IDENT"
-	INT     TokenType = "INT"
-	STRING  TokenType = "STRING"
+	EOF     TokenType = "EOF"     // End Of File
+	ILLEGAL TokenType = "ILLEGAL" // Unrecognized token
 
-	// Keywords
-	PACKAGE TokenType = "PACKAGE"
-	FUNC    TokenType = "FUNC"
-	VAR     TokenType = "VAR"
-	TYPE    TokenType = "TYPE"
-	IF      TokenType = "IF"
-	ELSE    TokenType = "ELSE"
-	FOR     TokenType = "FOR"
-	RETURN  TokenType = "RETURN"
-	// Add more...
+	// Literals
+	STATEMENT  TokenType = "STATEMENT"
+	IDENTIFIER TokenType = "IDENTIFIER"
+	INTEGER    TokenType = "INTEGER" // Changed from DIGIT to reflect numbers
+	FLOAT      TokenType = "FLOAT"   // Added for floating-point numbers
+	STRING     TokenType = "STRING"
 
 	// Operators
-	ASSIGN = "="
-	PLUS   = "+"
-	MINUS  = "-"
-	BANG   = "!"
-	ASTER  = "*"
-	SLASH  = "/"
-	LT     = "<"
-	GT     = ">"
-	EQ     = "=="
-	NEQ    = "!="
-	// Add more...
+	PLUS     TokenType = "PLUS"     // +
+	MINUS    TokenType = "MINUS"    // -
+	ASTERISK TokenType = "ASTERISK" // *
+	SLASH    TokenType = "SLASH"    // /
+	ASSIGN   TokenType = "ASSIGN"   // =
+	EQ       TokenType = "EQ"       // ==
+	NOT_EQ   TokenType = "NOT_EQ"   // !=
+	LT       TokenType = "LT"       // <
+	LE       TokenType = "LE"       // <=
+	GT       TokenType = "GT"       // >
+	GE       TokenType = "GE"       // >=
+	BANG     TokenType = "BANG"     // !
 
 	// Delimiters
-	COMMA     = ","
-	SEMICOLON = ";"
-	LPAREN    = "("
-	RPAREN    = ")"
-	LBRACE    = "{"
-	RBRACE    = "}"
+	COMMA     TokenType = "COMMA"     // ,
+	SEMICOLON TokenType = "SEMICOLON" // ;
+	LPAREN    TokenType = "LPAREN"    // (
+	RPAREN    TokenType = "RPAREN"    // )
+	LBRACE    TokenType = "LBRACE"    // {
+	RBRACE    TokenType = "RBRACE"    // }
+	LBRACKET  TokenType = "LBRACKET"  // [
+	RBRACKET  TokenType = "RBRACKET"  // ]
 )
-
-var TokenMap map[TokenType]TokenType = map[TokenType]TokenType{
-	"package": PACKAGE,
-	"func":    FUNC,
-	"var":     VAR,
-}
 
 type Token struct {
 	Type    TokenType
 	Literal string
-	Pos     int // optional: byte offset
-}
-
-func NewToken(t TokenType, lit string, pos int) Token {
-	return Token{
-		Type:    t,
-		Literal: lit,
-		Pos:     pos,
-	}
+	Pos     int // Starting position of the token in the input string (byte offset)
+	Line    int // Line number (for error reporting)
+	Column  int // Column number (for error reporting)
 }
 
 type TokenResult struct {
-	Token  Token
-	IsZero bool
-	Error  error
-}
-
-func ResultToken(t Token, err error) TokenResult {
-	return TokenResult{
-		Token: t,
-		Error: err,
-	}
-}
-
-func ResultTokenEmpty() TokenResult {
-	return TokenResult{
-		IsZero: true,
-	}
+	Token Token
+	Err   error
 }
 
 type TokenDef struct {
-	Id            string `json:"id"`
-	Pattern       string `json:"pattern"`
-	Type          string `json:"type"`
-	Precedence    int    `json:"precedence,omitempty"`
-	Associativity string `json:"associativity,omitempty"`
+	Id     string
+	Regexp string
 }
 
 type TokenConfig struct {
-	Version string     `json:"version"`
-	Tokens  []TokenDef `json:"tokens"`
+	Keywords  map[string]TokenType
+	Operators map[string]TokenType
 }
 
-func (t TokenConfig) QueryAll(literal string) (TokenDef, error, bool) {
-	for _, def := range t.Tokens {
-		reg, err := regexp.Compile(def.Pattern)
-		if err != nil {
-			return TokenDef{}, err, true
-		}
+func NewTokenConfig() TokenConfig {
+	return TokenConfig{
+		Keywords: map[string]TokenType{
+			"func":    "FUNC",
+			"let":     "LET",
+			"true":    "TRUE",
+			"false":   "FALSE",
+			"if":      "IF",
+			"else":    "ELSE",
+			"return":  "RETURN",
+			"package": "PACKAGE",
+			"var":     "VAR",
+			// more...
+		},
+		Operators: map[string]TokenType{
+			"==": EQ,
+			"!=": NOT_EQ,
+			"<=": LE,
+			">=": GE,
+			// more...
+		},
+	}
+}
 
-		if reg.Match([]byte(literal)) {
-			return def, nil, true
-		}
+func (tc TokenConfig) QueryAll(literal string) (TokenDef, error, bool) {
+	if tokType, ok := tc.Keywords[literal]; ok {
+		return TokenDef{Id: string(tokType)}, nil, true
 	}
 	return TokenDef{}, nil, false
-}
-
-func LoadTokenConfig(path string) (*TokenConfig, error) {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-
-	var config TokenConfig
-	if err := json.Unmarshal(data, &config); err != nil {
-		return nil, err
-	}
-	return &config, nil
 }

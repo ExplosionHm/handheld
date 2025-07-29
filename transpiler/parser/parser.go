@@ -5,22 +5,24 @@ import (
 	"log"
 )
 
-func TranspileToPascal(code string) (string, error) {
-	tokenDef, err := lexer.LoadTokenConfig("config.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	l := lexer.New(code, *tokenDef)
-
+func Tokenize(code string, config lexer.TokenConfig) ([]lexer.Token, error) {
+	l := lexer.New(code, lexer.NewTokenConfig())
+	results := []lexer.Token{}
 	for result := range l.Next() {
-		if result.Error != nil {
-			log.Fatal(result.Error)
+		if result.Err != nil {
+			log.Fatal(result.Err)
 		}
-
-		if !result.IsZero {
-			log.Println(result.Token)
-		}
+		log.Println(result.Token)
+		results = append(results, result.Token) //! `append` is inefficent
 	}
+	return results, nil
+}
 
-	return "", nil
+func TranspileToPascal(code string, config lexer.TokenConfig) (pas Pascal, err error) {
+	tokens, err := Tokenize(code, config)
+	if err != nil {
+		return Pascal{}, err
+	}
+	log.Println(tokens)
+	return Pascal{}, nil
 }

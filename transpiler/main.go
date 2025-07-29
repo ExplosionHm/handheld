@@ -1,6 +1,10 @@
 package main
 
-import "gopascal/parser"
+import (
+	"gopascal/parser"
+	"gopascal/parser/lexer"
+	"log"
+)
 
 func main() {
 
@@ -13,5 +17,15 @@ func main() {
 	}
 	`
 
-	parser.TranspileToPascal(code)
+	pascal, err := parser.TranspileToPascal(code, lexer.NewTokenConfig())
+	if err != nil {
+		log.Fatal(err)
+	}
+	/* var out string = ""
+	for _, t := range token {
+		out += "," + fmt.Sprintf("%v", t)
+	} */
+	if pascal.Lpr != "" {
+		log.Println(pascal)
+	}
 }
