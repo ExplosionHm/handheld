@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "tokens": [
+    { "id": "BREAK", "pattern": "^break$", "type": "keyword" },
+    { "id": "CASE", "pattern": "^case$", "type": "keyword" },
+    { "id": "CHAN", "pattern": "^chan$", "type": "keyword" },
+    { "id": "CONST", "pattern": "^const$", "type": "keyword" },
+    { "id": "CONTINUE", "pattern": "^continue$", "type": "keyword" },
+    { "id": "DEFAULT", "pattern": "^default$", "type": "keyword" },
+    { "id": "DEFER", "pattern": "^defer$", "type": "keyword" },
+    { "id": "ELSE", "pattern": "^else$", "type": "keyword" },
+    { "id": "FALLTHROUGH", "pattern": "^fallthrough$", "type": "keyword" },
+    { "id": "FOR", "pattern": "^for$", "type": "keyword" },
+    { "id": "FUNC", "pattern": "^func$", "type": "keyword" },
+    { "id": "GO", "pattern": "^go$", "type": "keyword" },
+    { "id": "GOTO", "pattern": "^goto$", "type": "keyword" },
+    { "id": "IF", "pattern": "^if$", "type": "keyword" },
+    { "id": "IMPORT", "pattern": "^import$", "type": "keyword" },
+    { "id": "INTERFACE", "pattern": "^interface$", "type": "keyword" },
+    { "id": "MAP", "pattern": "^map$", "type": "keyword" },
+    { "id": "PACKAGE", "pattern": "^package$", "type": "keyword" },
+    { "id": "RANGE", "pattern": "^range$", "type": "keyword" },
+    { "id": "RETURN", "pattern": "^return$", "type": "keyword" },
+    { "id": "SELECT", "pattern": "^select$", "type": "keyword" },
+    { "id": "STRUCT", "pattern": "^struct$", "type": "keyword" },
+    { "id": "SWITCH", "pattern": "^switch$", "type": "keyword" },
+    { "id": "TYPE", "pattern": "^type$", "type": "keyword" },
+    { "id": "VAR", "pattern": "^var$", "type": "keyword" }
+  ]
+}
